@@ -1,2 +1,9 @@
-assignment1/**/
+assignment1/cs231n/datasets/**
+assignment1/cs231n/.ipynb_checkpoints/**
+assignment1/cs231n/classifiers/**/
 start.sh
+assignment1/myenv/
+assignment1/.ipynb_checkpoints/
+assignment1/cs231n/**/
+!assignment1/cs231n/classifiers
+!assignment1/cs231n/classifiers/
