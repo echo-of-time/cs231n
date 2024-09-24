@@ -166,9 +166,13 @@ class KNearestNeighbor(object):
             # Hint: Look up the function numpy.argsort.                             #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
-            pass
-
+            
+            # Find the indices of the k smallest distances, use numpy.argsort to sort the distances
+            closest_indices = np.argsort(dists[i])[0:k] 
+            
+            # Get the labels of the k nearest neighbors
+            closest_y = self.y_train[closest_indices]
+            
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             #########################################################################
             # TODO:                                                                 #
@@ -178,8 +182,12 @@ class KNearestNeighbor(object):
             # label.                                                                #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
-            pass
+            
+            # Use numpy.bincount to count the number of occurrences of each label
+            counts = np.bincount(closest_y)
+            
+            # Get the label with the highest count
+            y_pred[i] = np.argmax(counts)
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
