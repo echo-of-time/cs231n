@@ -100,7 +100,7 @@ class KNearestNeighbor(object):
             # Do not use np.linalg.norm().                                        #
             #######################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-            l2_distances = np.sqrt(np.sum((X[i, :] - self.X_train[i, :]) ** 2))
+            l2_distances = np.sqrt(np.sum((self.X_train - X[i]) ** 2, axis=1))
             dists[i, :] = l2_distances
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -134,17 +134,17 @@ class KNearestNeighbor(object):
 
         X_test_squared = np.sum(X ** 2, axis=1).reshape(num_test, 1)
         X_train_squared = np.sum(self.X_train ** 2, axis=1).reshape(1, num_train)
-        X_test_X_train = np.dot(X, self.X_train)
+        X_test_X_train = np.dot(X, self.X_train.T)
         
         # Calculate the distances, use numpy boradcast
         dists = np.sqrt(X_test_squared - 2 * X_test_X_train + X_train_squared)
         
-        print("X_train:" + self.X_train.shape)
-        print("X_test:" + X.shape)
-        print("X_test_squared: " + X_test_squared.shape)
-        print("X_train_squared: " + X_train_squared.shape)
-        print("ab: " + X_test_X_train.shape)
-        print("dists: " + dists.shape)
+        print( self.X_train.shape)
+        print( X.shape)
+        print( X_test_squared.shape)
+        print( X_train_squared.shape)
+        print( X_test_X_train.shape)
+        print( dists.shape)
         
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
