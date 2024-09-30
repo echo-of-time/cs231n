@@ -142,12 +142,12 @@ class KNearestNeighbor(object):
         dists = np.sqrt(X_test_squared - 2 * X_test_X_train + X_train_squared)
         # but I still confuse for the boradcast
         
-        print( self.X_train.shape)
-        print( X.shape)
-        print( X_test_squared.shape)
-        print( X_train_squared.shape)
-        print( X_test_X_train.shape)
-        print( dists.shape)
+        # print( self.X_train.shape)
+        # print( X.shape)
+        # print( X_test_squared.shape)
+        # print( X_train_squared.shape)
+        # print( X_test_X_train.shape)
+        # print( dists.shape)
         
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
