@@ -132,12 +132,15 @@ class KNearestNeighbor(object):
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         # Expand the equation (a - b)^2 = a^2 - 2ab + b^2
 
-        X_test_squared = np.sum(X ** 2, axis=1).reshape(num_test, 1)
+        # a row vector (500, 1), each row is the sum of the squares sum of corresponding row in X
+        X_test_squared = np.sum(X ** 2, axis=1).reshape(num_test, 1) 
+        # a column vector (1, 5000), each column is the sum of the squares sum of corresponding row in selfX_train
         X_train_squared = np.sum(self.X_train ** 2, axis=1).reshape(1, num_train)
         X_test_X_train = np.dot(X, self.X_train.T)
         
         # Calculate the distances, use numpy boradcast
         dists = np.sqrt(X_test_squared - 2 * X_test_X_train + X_train_squared)
+        # but I still confuse for the boradcast
         
         print( self.X_train.shape)
         print( X.shape)
